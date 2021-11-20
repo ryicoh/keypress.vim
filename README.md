@@ -6,7 +6,7 @@ When press a key on keyboard, triggers autocmd event `KeyPress`.
 
 For Plug
 
-```vim:.vimrc
+```vim
 Plug "ryicoh/keypress.vim"
 ```
 
@@ -14,6 +14,7 @@ Plug "ryicoh/keypress.vim"
 ## Usage
 
 Show the pressed key.
-```vim:.vimrc
+
+```vim
 autocmd User KeyPress echo g:keypress#history[-1]
 ```
