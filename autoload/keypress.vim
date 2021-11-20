@@ -2,7 +2,7 @@ let g:keypress#history = []
 
 func! keypress#start()
     if !exists("s:filter_popup_id")
-        autocmd User KeyPress call s:nop()
+        autocmd User KeyPress :
 
         let s:filter_popup_id = popup_create(
             \ '',
@@ -17,7 +17,4 @@ endfunc
 func! s:handle_key(key)
     call add(g:keypress#history, a:key)
     doautocmd User KeyPress
-endfunc
-
-func! s:nop()
 endfunc
