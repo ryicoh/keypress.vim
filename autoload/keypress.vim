@@ -5,7 +5,7 @@ func! keypress#current() abort
         return g:keypress#history[-1]
     endif
 
-    return ""
+    return ''
 endfunc
 
 func! keypress#start() abort
@@ -18,7 +18,7 @@ func! keypress#start() abort
 endfunc
 
 func! s:create_popup() abort
-    if exists("s:filter_popup_id")
+    if exists('s:filter_popup_id')
         let s:closing = 1
         call popup_close(s:filter_popup_id)
         let s:closing = 0
@@ -26,13 +26,13 @@ func! s:create_popup() abort
 
     let s:filter_popup_id = popup_create(
         \ [],
-        \ #{
-        \     filter: { _, key -> s:handle_key(key)},
-        \     zindex: 10000,
-        \     line: 0,
-        \     col: 0,
-        \     mask: [[0, 1, 0, 1]],
-        \     callback: function('s:callback'),
+        \ {
+        \     'filter': { _, key -> s:handle_key(key)},
+        \     'zindex': 10000,
+        \     'line': 0,
+        \     'col': 0,
+        \     'mask': [[0, 1, 0, 1]],
+        \     'callback': function('s:callback'),
         \ })
 endfunc
 
@@ -42,7 +42,7 @@ func! s:handle_key(key) abort
 endfunc
 
 func! s:callback(_, __) abort
-    if exists("s:closing") && s:closing
+    if exists('s:closing') && s:closing
         return
     endif
 
