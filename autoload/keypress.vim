@@ -1,6 +1,6 @@
 let g:keypress#history = []
 
-func! keypress#current()
+func! keypress#current() abort
     if len(g:keypress#history) > 0
         return g:keypress#history[-1]
     endif
@@ -8,7 +8,7 @@ func! keypress#current()
     return ""
 endfunc
 
-func! keypress#start()
+func! keypress#start() abort
     augroup keypressstart
         au!
         au User KeyPress :
@@ -17,7 +17,7 @@ func! keypress#start()
     call s:create_popup()
 endfunc
 
-func! s:create_popup()
+func! s:create_popup() abort
     if exists("s:filter_popup_id")
         let s:closing = 1
         call popup_close(s:filter_popup_id)
@@ -36,15 +36,16 @@ func! s:create_popup()
         \ })
 endfunc
 
-func! s:handle_key(key)
+func! s:handle_key(key) abort
     call add(g:keypress#history, a:key)
     doautocmd User KeyPress
 endfunc
 
-func! s:callback(_, __)
+func! s:callback(_, __) abort
     if exists("s:closing") && s:closing
         return
     endif
 
+    call s:handle_key("\<c-c>")
     call s:create_popup()
 endfunc
