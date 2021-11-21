@@ -1,6 +1,7 @@
 # keypress.vim
 
 When press a key on keyboard, triggers autocmd event `KeyPress`.
+Only vim8.2+ is supported.
 
 ## Install
 
