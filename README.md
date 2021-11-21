@@ -16,5 +16,11 @@ Plug "ryicoh/keypress.vim"
 Show the pressed key.
 
 ```vim
-autocmd User KeyPress echo g:keypress#history[-1]
+autocmd User KeyPress echo keypress#current()
+```
+
+Show the history.
+
+```vim
+echo g:keypress#history
 ```
